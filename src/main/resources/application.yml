@@ -5,6 +5,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  sql:
+    init:
+      mode: never
 
     # 테이블 생성 후에 data.sql 실행
     defer-datasource-initialization: true
