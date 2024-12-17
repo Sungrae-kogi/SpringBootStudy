@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# 모든 .properties 파일 무시
+*.properties

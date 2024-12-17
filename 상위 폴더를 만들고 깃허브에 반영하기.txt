@@ -1,0 +1,21 @@
+springboot-developer 프로젝트 자체를 나의 github 레포지토리에 연결시켜두었는데.
+
+이 프로젝트 말고 새로운 프로젝트를 만들어서 학습을 계속 이어가려고 한다, 이때 새로운 프로젝트는
+
+기존 springboot-developer 프로젝트의 상위 폴더에 생성하려고 하는데 이때 github가 springboot-developer 프로젝트 말고
+
+새롭게 생성한 상위 폴더를 비추도록 수정하는 방법.
+
+1. 상위 폴더로 이동
+ cd..
+
+2. 기존 프로젝트의 .git 폴더 이동
+mv Project1/.git ./
+
+3. git 상태 확인
+git status
+
+4. add commit push
+git add.
+git commit -m "reconstruct folder"
+git push origin main
