@@ -5,15 +5,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  sql:
-    init:
-      mode: never
-  datasource:
-    url: jdbc:h2:mem:testdb
 
-  h2:
-    console:
-      enabled: true
-
-    # 테이블 생성 후에 data.sql 실행
+    # 테이블 생성 후 data.sql 실행
     defer-datasource-initialization: true
+
