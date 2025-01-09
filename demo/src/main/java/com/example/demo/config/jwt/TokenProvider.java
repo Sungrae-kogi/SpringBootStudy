@@ -27,6 +27,7 @@ public class TokenProvider {
 
     public String generateToken(User user, Duration expiredAt){
         Date now = new Date();
+        // 현재시간 + 토큰지속시간
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()), user);
     }
 
@@ -42,6 +43,10 @@ public class TokenProvider {
                 .setExpiration(expiry)  // 내용 exp : expiry 멤버 변숫값
                 .setSubject(user.getEmail())    //내용 sub : 유저의 이메일
                 .claim("id", user.getId())  // 클레임 id : 유저 id
+                /*
+                    프론트에서 로그인 시 내려받는 accessToken에서 로그인한 계정의 정보가 부족하다고 요청될 경우
+                    필요한 정보들을 Jwts.builder()의 claim()을 추가하여 정보를 담아 전달할 수 있다.
+                 */
                 // 서명 : 비밀값과 함께 해시값을 HS256 방식으로 암호화
                 .signWith(Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtProperties.getSecretKey())), SignatureAlgorithm.HS256)
                 .compact();
