@@ -41,6 +41,9 @@ public class WebSecurityConfig {
                                 "/signup",
                                 "/user"
                         ).permitAll()       //특정 URL은 인증 없이 접근 가능 위에것들
+                        .requestMatchers(
+                                "/admin"
+                        ).hasAnyRole("ADMIN")
                         .anyRequest().authenticated())  // 그 외의 모든 요청은 인증 필요.
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")    //커스텀 로그인 페이지 설정

@@ -14,6 +14,10 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
+    /*
+    스프링 부트에서 JWT를 사용한 인증 필터를 구현하려면, JwtAuthenticationFilter 클래스를 작성해야 합니다.
+    왜냐하면 JWT 토큰을 검증하고, 유효한 토큰인 경우 인증 객체를 생성하여 SecurityContext에 저장해야 하기 때문.
+     */
     // access 토큰 값이 담긴 Authorization 헤더 값을 가져온 뒤 액세스 토큰이 유효하다면 인증 정보를 설정.
     private final TokenProvider tokenProvider;
     private final static String HEADER_AUTHORIZATION = "Authorization";

@@ -22,6 +22,11 @@ import java.util.*;
 @RequiredArgsConstructor
 @Service
 public class TokenProvider {
+    /*
+        JWT도 어렵게 생각할 거 없다, 결국 Header에 담긴 인증 정보를 서버의 내용과 비교해서 인증절차를 거친 뒤
+        토큰값 (문자열) 을 만들고 유저에게 반환하는것.
+        밑에 그 외에 필요한 기능들은 메소드로 추가.
+     */
 
     private final JwtProperties jwtProperties;
 
@@ -55,15 +60,15 @@ public class TokenProvider {
     // JWT 토큰 유효성 검증 메소드
     public boolean validToken(String token){
         try{
-            Jwts.parser()
-                    .setSigningKey(jwtProperties.getSecretKey())
-                    .parseClaimsJws(token);
+//            Jwts.parser()
+//                    .setSigningKey(jwtProperties.getSecretKey())
+//                    .parseClaimsJws(token);
             //Jwts.parser()는 최신 버전의 jjwt 라이브러리에서 deprecated 되었습니다, 대신 Jwts.parserBuilder()를 사용합니다.
 
-//            Jwts.parserBuilder()
-//                    .setSigningKey(jwtProperties.getSecretKey()) // 비밀키 설정
-//                    .build() // JwtParser 생성
-//                    .parseClaimsJws(token); // 토큰 파싱 및 검증
+            Jwts.parserBuilder()
+                    .setSigningKey(jwtProperties.getSecretKey()) // 비밀키 설정
+                    .build() // JwtParser 생성
+                    .parseClaimsJws(token); // 토큰 파싱 및 검증
 
             return true;
         }catch(Exception e){    //복호화 과정에서 에러가 나면 유효하지 않은 토큰.
