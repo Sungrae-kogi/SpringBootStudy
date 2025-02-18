@@ -20,6 +20,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.IOException;
 import java.time.Duration;
 
+/*
+    OAuth2 로그인 성공 시 추가적인 작업을 처리하는 핸들러, ex) 리프레시 토큰 생성, 엑세스 토큰 생성, 인증 관련 설정및 쿠키 제거, 리다이렉트
+ */
+
 @RequiredArgsConstructor
 @Component
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
